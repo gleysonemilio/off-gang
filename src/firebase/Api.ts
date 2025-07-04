@@ -18,7 +18,7 @@ const getQrcode = async () => {
   return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 }
 
-export interface UpdateInforInterface {
+export interface InforQrCodeInterface {
   id: string
   type: string
   emoji?: string
@@ -51,7 +51,7 @@ async function createQrcode(type: string, description: string) {
   return user
 }
 
-const updateInforQrcode = async ({ id, type, description }: UpdateInforInterface) => {
+const updateInforQrcode = async ({ id, type, description, emoji }: InforQrCodeInterface) => {
   if (!id && !type) return null
 
   const page = doc(db, 'listQrCode', id)
@@ -59,6 +59,7 @@ const updateInforQrcode = async ({ id, type, description }: UpdateInforInterface
   await updateDoc(page, {
     type: type,
     description: description,
+    ...(emoji && { emoji: emoji }),
   })
 
   return page
