@@ -90,22 +90,21 @@ export default function Edit() {
           </div>
         </div>
         <div className="w-full flex flex-col items-start justify-start gap-2">
-          <span className="font-extrabold text-2xl text-gray-700 dark:text-gray-300">
-            Colocar Emoji
-          </span>
-
-          <div className="w-full">
-            {typeEdit === 'Texto' && (
-              <EmojiPicker
-                theme="dark"
-                width={'100%'}
-                height={'420px'}
-                searchDisabled
-                // reactions={true}ss
-              />
-            )}
-          </div>
-
+          {typeEdit === 'Texto' && (
+            <>
+              <span className="font-extrabold text-2xl text-gray-700 dark:text-gray-300">
+                Colocar Emoji
+              </span>
+              <div className="w-full">
+                <EmojiPicker
+                  width={'100%'}
+                  height={'420px'}
+                  searchDisabled
+                  // reactions={true}ss
+                />
+              </div>
+            </>
+          )}
           <span className="font-extrabold text-2xl text-gray-700 dark:text-gray-300">
             Colocar seu `{typeEdit}`
           </span>

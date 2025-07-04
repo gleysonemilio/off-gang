@@ -1,35 +1,18 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript"
-  ],
-  "plugins": [
-    "eslint-plugin-import-helpers",
-    "import-helpers"
-  ],
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "plugins": ["eslint-plugin-import-helpers", "import-helpers"],
   "rules": {
     "react/jsx-filename-extension": [
       1,
       {
-        "extensiona": [
-          ".js",
-          ".jsx"
-        ]
+        "extensiona": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "import-helpers/order-imports": [
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": [
-          "module",
-          "/^@shared/",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
+        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
         "alphabetize": {
           "order": "asc",
           "ignoreCase": true
