@@ -1,9 +1,8 @@
 // import Image from "next/image";
 // import ImgText from '../../assets/available-products.png';
+import Link from 'next/link'
 
-import Link from "next/link";
-import CardProducts from "../CardProducts";
-
+import CardProducts from '../CardProducts'
 
 export default function Products() {
   return (
@@ -27,8 +26,7 @@ export default function Products() {
         <Link href={'/product'}>
           <CardProducts />
         </Link>
-
       </div>
     </div>
-  );
+  )
 }

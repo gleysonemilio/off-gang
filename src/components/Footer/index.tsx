@@ -1,6 +1,3 @@
-
-
-
 export default function Footer() {
   return (
     <footer className="w-full h-20 flex items-center justify-center bg-gray-100 dark:bg-neutral-900 shadow-md">
@@ -8,5 +5,5 @@ export default function Footer() {
         © {new Date().getFullYear()} Your Company Off-gang. All rights reserved.
       </div>
     </footer>
-  );
+  )
 }
