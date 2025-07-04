@@ -5,7 +5,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensiona": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "import-helpers/order-imports": [
