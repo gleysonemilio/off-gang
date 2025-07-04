@@ -14,6 +14,7 @@ export default function Home() {
       </main>
       {/* http://localhost:3000/show?param=IWO2y93QQvEcJM1BUKQS */}
       {/* http://localhost:3000/edit?param=IWO2y93QQvEcJM1BUKQS */}
+      {/* https://off-gang.vercel.app/edit?param=IWO2y93QQvEcJM1BUKQS */}
     </div>
   )
 }
