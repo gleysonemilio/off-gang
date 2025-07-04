@@ -1,13 +1,9 @@
 'use client'
 
-import { getQrcodeOfId } from '@/firebase/Api'
+import { getQrcodeOfId, InforQrCodeInterface } from '@/firebase/Api'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-export interface InforQrCodeInterface {
-  type: string
-  description: string
-}
 
 export default function Show() {
   const searchParams = useSearchParams()
@@ -38,19 +34,17 @@ export default function Show() {
   }
 
   return (
-    <div className="w-full my-20 px-10 font-[family-name:var(--font-geist-sans)]">
+    <div className="w-full h-[70vh] flex justify-center items-center my-20 px-10">
       {inforQrCode && (
-        <div className="flex flex-col items-center justify-center gap-4">
-          <span className="text-gray-500 dark:text-gray-400">{inforQrCode?.description}</span>
+        <div className="flex flex-col items-center justify-center gap-8">
+          <span className="text-9xl">{inforQrCode?.emoji}</span>
+
+          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+            {inforQrCode?.description}
+          </h3>
         </div>
       )}
-
-      {/*https://github.com/ianstormtaylor/slate?tab=readme-ov-file#examples
-            https://www.reactwebeditor.com/
-            
-            <button onClick={openInstagram}>
-                Abrir Instagram
-            </button> */}
     </div>
   )
 }
+
