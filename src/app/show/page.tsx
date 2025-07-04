@@ -4,7 +4,6 @@ import { getQrcodeOfId, InforQrCodeInterface } from '@/firebase/Api'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-
 export default function Show() {
   const searchParams = useSearchParams()
   const param = searchParams.get('param')
