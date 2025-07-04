@@ -5,9 +5,7 @@ import {
   getDoc,
   getDocs,
   getFirestore,
-  query,
   updateDoc,
-  where,
 } from 'firebase/firestore'
 
 import { firebaseapp } from './initializeApp'

@@ -3,14 +3,8 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import {
-  UpdateInforInterface,
-  createQrcode,
-  getQrcodeOfId,
-  updateInforQrcode,
-} from '@/firebase/Api'
+import { UpdateInforInterface, getQrcodeOfId, updateInforQrcode } from '@/firebase/Api'
 import EmojiPicker from 'emoji-picker-react'
-import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { Facebook, Instagram, LetterText, Linkedin } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
