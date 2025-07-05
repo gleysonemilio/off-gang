@@ -2,6 +2,8 @@
   "extends": ["next/core-web-vitals", "next/typescript"],
   "plugins": ["eslint-plugin-import-helpers", "import-helpers"],
   "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/no-explicit-any": ["off"],
     "react/jsx-filename-extension": [
       1,
