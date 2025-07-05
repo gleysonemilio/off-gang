@@ -9,7 +9,6 @@ import Picker from '@emoji-mart/react'
 import { Facebook, Instagram, LetterText, Linkedin } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Skeleton } from "@/components/ui/skeleton"
 import SkeletonEdit from '@/components/Skeleton/Skeleton-edit'
 
 const arrayButton = [
