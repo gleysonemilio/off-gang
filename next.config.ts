@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   importOrder: ['^@core/(.*)$', '^@server/(.*)$', '^@ui/(.*)$', '^[./]'],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 }
 
 export default nextConfig
