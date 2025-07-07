@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -125,14 +125,31 @@
 
 #img_home {
   background-image: url('../assets/bg-img-text.png');
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: unset;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-  width: 75vh;
-  height: 30vh;
-  object-fit: fill;
+  width: 100% !important; */
+  /* width: 75vh;
+  height: 30vh; */
+  /* object-fit: fill; */
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  @media (width <= 800px) {
+    height: 100vh;
+    background-position: top;
+    background-size: inherit;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hide-on-hover:hover {
