@@ -1,6 +1,6 @@
 'use client'
 
-import { getQrcodeOfId, InforQrCodeInterface } from '@/firebase/Api'
+import { InforQrCodeInterface, getQrcodeOfId } from '@/firebase/Api'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -22,7 +22,7 @@ export default function Show() {
     if (inforQrCode?.type === 'Instagram') {
       openInstagram()
     }
-  }, [inforQrCode])
+  }, [])
 
   const openInstagram = () => {
     window.location.href = `instagram://user?username=${inforQrCode?.description}`
@@ -36,9 +36,11 @@ export default function Show() {
     <div className="w-full h-[70vh] flex justify-center items-center my-20 px-10">
       {inforQrCode && (
         <div className="flex flex-col items-center justify-center gap-8">
-          <span className="text-9xl">{inforQrCode?.emoji}</span>
+          <span className="text-9xl bg-neutral-200 dark:bg-neutral-800 rounded-sm">
+            {inforQrCode?.emoji}
+          </span>
 
-          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+          <h3 className="scroll-m-20 text-3xl font-semibold tracking-tight">
             {inforQrCode?.description}
           </h3>
         </div>
@@ -46,4 +48,3 @@ export default function Show() {
     </div>
   )
 }
-

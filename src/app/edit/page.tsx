@@ -1,5 +1,6 @@
 'use client'
 
+import SkeletonEdit from '@/components/Skeleton/Skeleton-edit'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -9,7 +10,6 @@ import Picker from '@emoji-mart/react'
 import { Facebook, Instagram, LetterText, Linkedin } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import SkeletonEdit from '@/components/Skeleton/Skeleton-edit'
 
 const arrayButton = [
   {
@@ -59,18 +59,16 @@ export default function Edit() {
       id: uId,
       type: inforQrcode.type,
       description: inforQrcode?.description,
-      ...inforQrcode.emoji && { emoji: inforQrcode.emoji }
+      ...(inforQrcode.emoji && { emoji: inforQrcode.emoji }),
     })
   }
 
   return (
-
     <div className="w-full max-w-[900px] my-20 px-10 font-[family-name:var(--font-geist-sans)] justify-center items-center flex flex-col gap-10">
       <div className="flex w-full flex-col items-start justify-start gap-8">
-        {inforQrcode.type === ''
-          ?
+        {inforQrcode?.type === '' ? (
           <SkeletonEdit />
-          :
+        ) : (
           <>
             <div className="flex flex-col items-start justify-start gap-2">
               <span className="font-extrabold text-2xl text-gray-700 dark:text-gray-300">
@@ -81,10 +79,12 @@ export default function Edit() {
                   <Button
                     variant={label === inforQrcode?.type ? 'secondary' : 'ghost'}
                     key={label}
-                    onClick={() => setInforQrcode({
-                      ...inforQrcode,
-                      type: label
-                    })}
+                    onClick={() =>
+                      setInforQrcode({
+                        ...inforQrcode,
+                        type: label,
+                      })
+                    }
                     className={`flex items-center justify-center gap-2`}
                   >
                     {icon}
@@ -100,16 +100,18 @@ export default function Edit() {
                     Colocar Emoji
                   </span>
                   <div className="w-full flex flex-col sm:flex sm:flex-row gap-2">
-                    <div className="w-full flex items-center justify-center bg-neutral-800 sm:text-8xl text-5xl p-2 rounded-sm">
+                    <div className="w-full flex items-center justify-center bg-neutral-200 dark:bg-neutral-800 sm:text-8xl text-5xl p-2 rounded-sm">
                       <span>{inforQrcode.emoji}</span>
                     </div>
-                    <div className='w-full flex justify-center items-center'>
+                    <div className="w-full flex justify-center items-center">
                       <Picker
                         data={data}
-                        onEmojiSelect={(value: any) => setInforQrcode({
-                          ...inforQrcode,
-                          emoji: value.native
-                        })}
+                        onEmojiSelect={(value: any) =>
+                          setInforQrcode({
+                            ...inforQrcode,
+                            emoji: value.native,
+                          })
+                        }
                         skinTonePosition="search"
                         searchPosition="static"
                         previewPosition="none"
@@ -130,7 +132,7 @@ export default function Edit() {
                   onChange={(e) =>
                     setInforQrcode({
                       ...inforQrcode,
-                      description: e.target.value
+                      description: e.target.value,
                     })
                   }
                 />
@@ -139,10 +141,12 @@ export default function Edit() {
                   <Textarea
                     placeholder="Type your message here."
                     value={inforQrcode?.description}
-                    onChange={(e) => setInforQrcode({
-                      ...inforQrcode,
-                      description: e.target.value
-                    })}
+                    onChange={(e) =>
+                      setInforQrcode({
+                        ...inforQrcode,
+                        description: e.target.value,
+                      })
+                    }
                   />
                   <p className="text-muted-foreground text-sm">
                     Este `{inforQrcode?.type}` ira aparecer quando alguem escanear o QR Code.
@@ -154,7 +158,7 @@ export default function Edit() {
               Salvar
             </Button>
           </>
-        }
+        )}
       </div>
     </div>
   )
