@@ -1,22 +1,19 @@
 import Image from 'next/image'
 
-export default function CardProducts() {
+interface CardProductsInterface {
+  img: any
+}
+
+export default function CardProducts({ img }: CardProductsInterface) {
   return (
     <div className="relative overflow-hidden flex flex-col group gap-2 cursor-pointer">
-      <Image
-        src={
-          'https://bawclothing.fbitsstatic.net/img/p/moletom-hoodie-selfie-chenille-150349/338016.jpg?w=556&h=833&v=202506051948'
-        }
-        alt="Product Image"
-        width={280}
-        height={500}
-      />
+      <Image src={img} alt="Product Image" width={180} height={200} />
       <div className="absolute top-[330px] left-19 bg-green-500 text-white opacity-0 group-hover:opacity-100 px-3 ">
-        Compra
+        Comprar
       </div>
 
       <div>
-        <p className="text-sm ">CAMISETA REGULAR QR-CODE</p>
+        <p className="text-sm ">CAMISETA QR-CODE</p>
         <span className="text-sm font-bold text-neutral-500">R$ 100,00</span>
       </div>
     </div>
