@@ -10,24 +10,27 @@ import {
 
 import { firebaseapp } from './initializeApp'
 
-const db = getFirestore(firebaseapp)
-const listQrCodeCollectionRef = collection(db, 'listQrCode')
-
-const getQrcode = async () => {
-  const data = await getDocs(listQrCodeCollectionRef)
-  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-}
-
 export interface InforQrCodeInterface {
   id: string
   type: string
   emoji?: string
   description: string
 }
+const nameBd = process.env.NEXT_PUBLIC_NAME_LIST_FIREBASE_TESTE as string
 
-async function getQrcodeOfId(id: string) {
+const db = getFirestore(firebaseapp)
+const listQrCodeCollectionRef = collection(db, nameBd)
+
+const getQrcode = async () => {
+  const data = await getDocs(listQrCodeCollectionRef)
+  const generationList = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+  return generationList as InforQrCodeInterface[]
+}
+
+async function getQrcodeOfId(id: string, isEncryption?: boolean) {
   try {
-    const docRef = doc(db, 'listQrCode', id)
+    const idConver = isEncryption ? atob(id) : id
+    const docRef = doc(db, nameBd, idConver)
     const docSnap = await getDoc(docRef)
 
     if (docSnap.exists()) {
@@ -42,10 +45,11 @@ async function getQrcodeOfId(id: string) {
   }
 }
 
-async function createQrcode(type: string, description: string) {
+async function createQrcode() {
   const user = await addDoc(listQrCodeCollectionRef, {
-    type,
-    description,
+    type: '',
+    emoji: '',
+    description: '',
   })
   return user
 }
@@ -53,7 +57,7 @@ async function createQrcode(type: string, description: string) {
 const updateInforQrcode = async ({ id, type, description, emoji }: InforQrCodeInterface) => {
   if (!id && !type) return null
 
-  const page = doc(db, 'listQrCode', id)
+  const page = doc(db, nameBd, id)
 
   await updateDoc(page, {
     type: type,
