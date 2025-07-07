@@ -1,4 +1,5 @@
 import Products from '@/components/Products'
+import { AppProvider } from '@/hooks/AppContext'
 
 export default function Home() {
   return (
@@ -9,7 +10,9 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-col items-center justify-center text-gray-700 dark:text-gray-300">
-          <Products />
+          <AppProvider>
+            <Products />
+          </AppProvider>{' '}
         </div>
       </main>
       {/* http://localhost:3000/show?param=IWO2y93QQvEcJM1BUKQS */}
