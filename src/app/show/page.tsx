@@ -14,7 +14,7 @@ export default function Show() {
   }, [])
 
   const handleGetQrcode = async () => {
-    const data = await getQrcodeOfId(param as string)
+    const data = await getQrcodeOfId(param as string, true)
     setInforQrCode(data as InforQrCodeInterface)
   }
 
