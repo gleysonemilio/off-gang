@@ -11,6 +11,8 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { InforQrCodeInterface, createQrcode, getQrcode } from '@/firebase/Api'
+import Link from 'next/link'
+import { QRCodeSVG } from 'qrcode.react'
 import { useEffect, useState } from 'react'
 
 export default function Adm() {
@@ -18,8 +20,6 @@ export default function Adm() {
 
   const handleGetAllQrCode = async () => {
     const data = await getQrcode()
-
-    console.log(data)
 
     setlist(data)
   }
@@ -52,9 +52,20 @@ export default function Adm() {
         <TableBody>
           {list.map(({ id, type, description, emoji }) => (
             <TableRow>
-              <TableCell className="font-mono text-xs">{id}</TableCell>
               <TableCell className="font-mono text-xs">
-                https://off-gang.vercel.app/show?param={btoa(id)}
+                <span>
+                  <Link href={`https://off-gang.vercel.app/edit?param=${id}`} target="_blank">
+                    {id}
+                  </Link>
+                </span>
+              </TableCell>
+              <TableCell className="flex flex-col font-mono text-xs gap-2">
+                <span>
+                  <Link href={`https://off-gang.vercel.app/show?param=${btoa(id)}`} target="_blank">
+                    https://off-gang.vercel.app/show?param={btoa(id)}
+                  </Link>{' '}
+                </span>
+                <QRCodeSVG value={`https://off-gang.vercel.app/show?param=${btoa(id)}`} />
               </TableCell>
               <TableCell className="font-mono text-xs">{type}</TableCell>
               <TableCell className="font-mono text-xs text-right">{description}</TableCell>

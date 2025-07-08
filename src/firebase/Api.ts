@@ -47,7 +47,7 @@ async function getQrcodeOfId(id: string, isEncryption?: boolean) {
 
 async function createQrcode() {
   const user = await addDoc(listQrCodeCollectionRef, {
-    type: '',
+    type: 'Texto',
     emoji: '',
     description: '',
   })
